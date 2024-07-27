@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping list example</title>
     <style>
-      li {
-        margin-bottom: 10px;
-      }
+        li {
+            margin-bottom: 10px;
+        }
 
-      li button {
-        font-size: 12px;
-        margin-left: 20px;
-        color: #666;
-      }
+        li button {
+            font-size: 12px;
+            margin-left: 20px;
+            color: #666;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
 
     <h1>My shopping list</h1>
 
     <div>
-      <label for="item">Enter a new item:</label>
-      <input type="text" name="item" id="item">
-      <button>Add item</button>
+        <label for="item">Enter a new item:</label>
+        <input type="text" name="item" id="item">
+        <button>Add item</button>
     </div>
 
     <ul>
@@ -31,7 +33,36 @@
     </ul>
 
     <script>
+        let ul = document.querySelector("ul");
+        let input = document.querySelector("input");
+        let button = document.querySelector("button");
 
+        button.addEventListener("click", (e) => {
+            let inputValue = input.value
+            input.textContent = "";
+
+            let li = document.createElement("li");
+            let span = document.createElement("span");
+            let button = document.createElement("button");
+
+            li.appendChild(span);
+            li.appendChild(button);
+
+            span.textContent = inputValue;
+            button.textContent = "Delete";
+
+            console.log(span.value);
+            console.log(button.value);
+
+            ul.appendChild(li);
+
+            button.addEventListener("click", () => {
+                li.remove();
+            })
+
+            input.focus();
+        })
     </script>
-  </body>
+</body>
+
 </html>
